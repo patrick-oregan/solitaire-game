@@ -1,8 +1,6 @@
 """
 MATH20621 - Coursework 3
 Student name: Patrick O'Regan
-Student id:   11297826
-Student mail: patrick.oregan@student.manchester.ac.uk
 """
 
 def display_state(s, *, clear=False):
@@ -55,9 +53,6 @@ def display_state(s, *, clear=False):
         print()
     print(' A   B   C   D   E   F')
 
-
-
-# Q1 
 def initial_state():
     import random 
     """
@@ -86,7 +81,6 @@ def initial_state():
             numbers.remove(numbers[0])   # removes the number that was added to the sets 
     return state  
 
-# Q2
 def parse_move(input_str):
     """
     Takes the user input string such as ("AD4") and the function interprets this as moving 4 
@@ -132,7 +126,6 @@ def parse_move(input_str):
     move = (source_stack, destination_stack, number_of_cards)
     return move
 
-# Q3
 def validate_move(state, move):
     """
     Validates the move - returns true if the move 'move' can be applied to a game in state 
@@ -189,7 +182,6 @@ def validate_move(state, move):
             return False
     return True
 
-# Q4
 def apply_move(state, move):
     """
     Takes a valid game state 'state' and move tuple 'move'. The function doesn't return anything  
@@ -224,22 +216,12 @@ def apply_move(state, move):
     if b == [9, 8, 7, 6, 5, 4, 3, 2, 1]:
         state['complete'][move[1]] = True
 
-# Q5
 def game_won(state):
     """ 
     Takes a valid game state and returns True if the game has been won (that is, all cards are in 
     a completed stack) and False otherwise.
     """ 
     return sum(state['complete']) >= 4
-
-
-# For questions 1-5, DO NOT edit the play_game function.
-# For the tasks in questions 1-5 initial_state, parse_move,
-# validate_move, apply_move, and game_won must work with the
-# the unmodified play_game function.
-
-# For questions 6, 7 and 8, you should modify the play_game
-# function
 
 def play_game():
     """ 
@@ -268,14 +250,12 @@ def play_game():
                     break  # Exit the loop if parse_move succeeds
                 except ValueError:
                     print("Invalid move. Please try again.")   # ask the user to enter a valid move
-            
-            # Q7 resetting the game and calling a new initial state 
+    
             if move == 0:
                 board = initial_state()
                 moves.clear()  # clear move history after reset
                 continue  # restart the game loop
                 
-            # Q8 undo moves 
             if move == -1:   
                 if len(moves) == 0:   # when there are no moves left to undo
                     print("The board is back to it's original state, you cannot undo any more moves")
@@ -325,3 +305,4 @@ def play_game():
         pass
 
 play_game()
+
